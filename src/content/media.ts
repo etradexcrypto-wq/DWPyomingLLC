@@ -1,0 +1,30 @@
+// Every photographic asset has one visible placement. Hero variants are responsive views of one slot.
+export const media = {
+  heroDesktop: "/assets/images/hero-desktop.webp",
+  heroMobile: "/assets/images/hero-mobile.webp",
+  homeBoardroom: "/assets/images/home-boardroom.webp",
+  aboutFoundation: "/assets/images/about-foundation.webp",
+  businessOverview: "/assets/images/business-overview.webp",
+  businessDevelopment: "/assets/images/business-development.webp",
+  businessPartnerships: "/assets/images/business-partnerships.webp",
+  businessGlobalAssets: "/assets/images/business-global-assets.webp",
+  servicesOverview: "/assets/images/services-overview.webp",
+  servicesCorporate: "/assets/images/services-corporate.webp",
+  servicesMarket: "/assets/images/services-market.webp",
+  opportunitiesDubai: "/assets/images/opportunities-dubai.webp",
+  opportunitiesWyoming: "/assets/images/opportunities-wyoming.webp",
+  learningCrypto: "/assets/images/learning-crypto.webp",
+  learningCustody: "/assets/images/learning-custody.webp",
+  learningRealEstate: "/assets/images/learning-real-estate.webp",
+  learningDueDiligence: "/assets/images/learning-due-diligence.webp",
+  mobileBusiness: "https://plus.unsplash.com/premium_photo-1682148393028-d43b5782c9fc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  contactConversation: "/assets/images/contact-conversation.webp",
+  opportunityGallery: "/assets/images/opportunity-gallery.webp",
+  opportunityStrategy: "/assets/images/opportunity-strategy.webp",
+  opportunityDevelopment: "/assets/images/opportunity-development.webp",
+  opportunityConnection: "/assets/images/opportunity-connection.webp",
+  cryptoNetwork: "/assets/images/crypto-network.webp",
+  propertyPlan: "/assets/images/property-plan.webp",
+} as const;
+
+export type MediaKey = keyof typeof media;
