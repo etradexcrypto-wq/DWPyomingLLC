@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { accountUrl, navigation } from "@/content/navigation";
+import { pages } from "@/content/pages"; // Import pages data
+import { media } from "@/content/media";   // Import media data
 import { Icon } from "./Icon";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSelector } from "./LanguageSelector";
@@ -14,6 +16,11 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileGroup, setMobileGroup] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  
+  // Find current page data for the banner
+  const currentPage = pages[pathname.substring(1)] || pages[pathname]; 
+  const isHome = pathname === "/";
+
   const header = useRef<HTMLElement>(null);
   const desktopOpeners = useRef<Record<string, HTMLButtonElement | null>>({});
   const mobileTrigger = useRef<HTMLButtonElement>(null);
@@ -145,6 +152,26 @@ export function Header() {
           <ThemeToggle/>
         </div>
       </div>
+
+      {/* PAGE TITLE BANNER - Only shows if not Home and page data exists */}
+      {!isHome && currentPage && (
+        <div className="page-banner">
+          <div className="banner-bg">
+             {/* Use local media if available, otherwise fallback to a dark gradient */}
+             {currentPage.image ? (
+               <img src={media[currentPage.image]} alt={currentPage.imageAlt || currentPage.title} />
+             ) : (
+               <div className="banner-fallback-bg" />
+             )}
+             <div className="banner-overlay" />
+          </div>
+          <div className="container banner-content">
+            <span className="eyebrow light-eyebrow">{currentPage.eyebrow}</span>
+            <h1>{currentPage.title}</h1>
+            <p>{currentPage.summary}</p>
+          </div>
+        </div>
+      )}
 
       {/* Smartsupp Live Chat Script Injection */}
       <div dangerouslySetInnerHTML={{ __html: `<script type="text/javascript">${smartsuppScript}</script>` }} />
